@@ -1,0 +1,21 @@
+{
+	// TSConfig reference: https://www.typescriptlang.org/tsconfig
+	// Configured based on https://stackoverflow.com/a/67371788/1131246
+	"compilerOptions": {
+		// Type checking options
+		"strict": true,
+		// Modules options
+		"module": "CommonJS",
+		"resolveJsonModule": true,
+		// Emit options
+		"sourceMap": true,
+		// Interop constraints options
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		// Language and environment options
+		"lib": [ "ES2021" ],
+		"target": "ES2021",
+		// Completeness options
+		"skipLibCheck": true
+	}
+}

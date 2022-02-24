@@ -1,0 +1,27 @@
+{
+	"name": "base58-uint8-convert",
+	"description": "Convert between Base58 and unsigned 8-bit integer array",
+	"engines": {
+		"node": "16.x",
+		"npm": "8.x"
+	},
+	"main": "dist/index.js",
+	"dependencies": {
+		"bs58": "^5.0.0",
+		"commander": "^9.0.0"
+	},
+	"devDependencies": {
+		"@types/node": "^16.11.21",
+		"eslint-config-standard-with-typescript": "^21.0.1",
+		"ts-node": "^10.4.0",
+		"typescript": "~4.4.4"
+	},
+	"scripts": {
+		"lint": "eslint --no-error-on-unmatched-pattern *.cjs src test",
+		"fix": "eslint --no-error-on-unmatched-pattern --fix *.cjs src test",
+		"build": "tsc --build src",
+		"start": "ts-node src/index.ts"
+	},
+	"license": "UNLICENSED",
+	"private": true
+}

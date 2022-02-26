@@ -1,7 +1,8 @@
-import { program } from 'commander'
-import { decode } from 'bs58'
+import { resolve as pathResolve } from 'node:path'
+import { readFileSync } from 'node:fs'
 
-import { description } from '../package.json'
+import { program } from 'commander'
+import { decode, encode } from 'bs58'
 
 // Private classes
 class CommandError extends Error {}
@@ -12,10 +13,24 @@ function base58ToUInt8Array (value: string): void {
 }
 
 function uInt8ArrayToBase58 (value: string): void {
-  throw new CommandError('Not implemented')
+  let json: any
+  try {
+    json = JSON.parse(value)
+  } catch (error) {
+    throw new CommandError('Not a JSON value')
+  }
+  if (!Array.isArray(json)) {
+    throw new CommandError('JSON is not an array')
+  }
+  if (!json.every(v => typeof v === 'number' && v >= 0 && v <= 255)) {
+    throw new CommandError('Not all values in array are unsigned 8-bit integer')
+  }
+  const array = Uint8Array.from(json)
+  console.log(encode(array))
 }
 
 // Main
+const { description } = JSON.parse(readFileSync(pathResolve(__dirname, '../package.json'), 'utf-8'))
 program.description(description)
 program
   .command('uint8')

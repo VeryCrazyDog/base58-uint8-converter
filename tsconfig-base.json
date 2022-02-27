@@ -6,7 +6,6 @@
 		"strict": true,
 		// Modules options
 		"module": "CommonJS",
-		"resolveJsonModule": true,
 		// Emit options
 		"sourceMap": true,
 		// Interop constraints options

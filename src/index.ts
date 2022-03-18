@@ -6,13 +6,15 @@ import { decode, encode } from 'bs58'
 
 // Private classes
 class CommandError extends Error {}
+CommandError.prototype.name = 'CommandError'
 
-function base58ToUInt8Array (value: string): void {
+// Private functions
+function base58ToUInt8ArrayCmd (value: string): void {
   const data = decode(value)
   console.log(JSON.stringify(Array.from(data)))
 }
 
-function uInt8ArrayToBase58 (value: string): void {
+function uInt8ArrayToBase58Cmd (value: string): void {
   let json: any
   try {
     json = JSON.parse(value)
@@ -36,12 +38,12 @@ program
   .command('uint8')
   .description('Convert Base58 to unsigned 8-bit integer array')
   .argument('<VALUE>', 'Base58 encoded value')
-  .action(base58ToUInt8Array)
+  .action(base58ToUInt8ArrayCmd)
 program
   .command('base58')
   .description('Convert unsigned 8-bit integer array to Base58')
   .argument('<VALUE>', 'Unsigned 8-bit integer array in JSON format')
-  .action(uInt8ArrayToBase58)
+  .action(uInt8ArrayToBase58Cmd)
 
 program.parseAsync().catch(error => {
   if (!(error instanceof CommandError)) { throw error }

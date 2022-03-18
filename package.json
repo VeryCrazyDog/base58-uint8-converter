@@ -1,5 +1,6 @@
 {
 	"name": "base58-uint8-converter",
+	"version": "1.0.0",
 	"description": "CLI for convertion between Base58 and unsigned 8-bit integer array",
 	"engines": {
 		"node": "16.x",
